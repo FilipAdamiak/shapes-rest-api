@@ -10,7 +10,7 @@ import pl.kurs.error.EntityNotFoundException;
 import pl.kurs.model.Shape;
 import pl.kurs.model.command.CreateShapeCommand;
 import pl.kurs.model.command.UpdateShapeCommand;
-import pl.kurs.model.constants.MapOfClasses;
+import pl.kurs.model.constants.AllEntities;
 import pl.kurs.model.factory.RepoFactory;
 import pl.kurs.model.command.SearchShapeCommand;
 import pl.kurs.repository.repointerface.ShapeInterface;
@@ -29,7 +29,7 @@ public class ShapeService<T extends Shape> {
 
     @Transactional
     public T addShape(CreateShapeCommand command) {
-        T toSave = modelMapper.map(command, (Type) MapOfClasses.MAP.get(command.getType()));
+        T toSave = modelMapper.map(command, (Type) AllEntities.MAP.get(command.getType()));
         return shapeRepository.saveAndFlush(toSave);
     }
 

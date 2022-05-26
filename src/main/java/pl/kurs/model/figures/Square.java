@@ -1,7 +1,5 @@
 package pl.kurs.model.figures;
 
-import com.querydsl.core.BooleanBuilder;
-import com.querydsl.core.types.Predicate;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,12 +7,10 @@ import org.springframework.stereotype.Component;
 import pl.kurs.model.Shape;
 import pl.kurs.model.User;
 import pl.kurs.model.enums.Type;
-import pl.kurs.model.command.SearchShapeCommand;
 import pl.kurs.model.searchcriteria.Parameters;
 
 import javax.persistence.Entity;
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Entity
 @Getter

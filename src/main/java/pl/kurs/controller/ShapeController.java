@@ -1,7 +1,6 @@
 package pl.kurs.controller;
 
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,12 +10,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.kurs.model.Shape;
 import pl.kurs.model.command.CreateShapeCommand;
+import pl.kurs.model.command.SearchShapeCommand;
 import pl.kurs.model.command.UpdateShapeCommand;
 import pl.kurs.model.dto.ResultDto;
-import pl.kurs.model.command.SearchShapeCommand;
 import pl.kurs.service.ShapeService;
 
-import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;

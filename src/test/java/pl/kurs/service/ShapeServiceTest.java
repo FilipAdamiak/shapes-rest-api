@@ -1,27 +1,17 @@
 package pl.kurs.service;
 
-import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import pl.kurs.model.Shape;
 import pl.kurs.model.User;
-import pl.kurs.model.command.CreateShapeCommand;
-import pl.kurs.model.command.UpdateShapeCommand;
 import pl.kurs.model.figures.Circle;
 import pl.kurs.model.figures.Rectangle;
 import pl.kurs.model.figures.Triangle;
 import pl.kurs.model.searchcriteria.Parameters;
 import pl.kurs.repository.ShapeRepository;
-
-import java.time.LocalDateTime;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ShapeServiceTest<T extends Shape> {
 
@@ -33,7 +23,6 @@ class ShapeServiceTest<T extends Shape> {
     private ShapeRepository<Rectangle> rectangleRepositoryMock;
     @Mock
     private ShapeRepository<Triangle> triangleRepositoryMock;
-
 
     private User user1, user2;
     private Parameters parameters1, parameters2;

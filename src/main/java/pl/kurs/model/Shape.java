@@ -1,11 +1,8 @@
 package pl.kurs.model;
 
-import com.querydsl.core.types.Predicate;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 import pl.kurs.model.interfaces.ShapeFeature;
 
 import javax.persistence.*;

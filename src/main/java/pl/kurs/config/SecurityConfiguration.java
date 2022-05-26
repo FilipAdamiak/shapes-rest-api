@@ -1,7 +1,6 @@
 package pl.kurs.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -56,7 +55,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         JdbcUserDetailsManagerConfigurer<AuthenticationManagerBuilder> configurer =
                 auth.jdbcAuthentication().dataSource(dataSource);
-
+        System.out.println(secret);
+        System.out.println(password);
+        System.out.println(username);
         if (!dataSource.getConnection().getMetaData().getTables(null, "", "USERS", null).first()) {
             configurer.withDefaultSchema()
                     .withUser(username)
@@ -74,7 +75,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/swagger-resources/**").permitAll()
                 .antMatchers("/v2/api-docs").permitAll()
-                .anyRequest().permitAll()
+                .anyRequest().authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
