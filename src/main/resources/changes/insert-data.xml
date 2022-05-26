@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="oneDay" value="now() + interval 25 hour" dbms="h2"/>
+    <property name="twoHours" value="now() + interval 2 hour" dbms="h2"/>
+    <property name="twoDays" value="now() + interval 2 day" dbms="h2"/>
+    <property name="fiveDays" value="now() + interval 5 day" dbms="h2"/>
+
+    <changeSet id="001" author="filip" runOnChange="true">
+
+        <insert tableName="user">
+            <column name="id" value="1"/>
+            <column name="name" value="Adam"/>
+            <column name="surname" value="Kowalski"/>
+            <column name="email" value="123@gmail.com"/>
+            <column name="version" value="0"/>
+            <column name="deleted" valueBoolean="false"/>
+        </insert>
+
+        <insert tableName="user">
+            <column name="id" value="2"/>
+            <column name="name" value="Szymon"/>
+            <column name="surname" value="Nowak"/>
+            <column name="email" value="szymus@gmail.com"/>
+            <column name="version" value="0"/>
+            <column name="deleted" valueBoolean="false"/>
+        </insert>
+
+        <insert tableName="shape">
+            <column name="id" value="1"/>
+            <column name="version" value="0"/>
+            <column name="created_date"  valueNumeric="${twoHours}"/>
+            <column name="user_id" value="1"/>
+        </insert>
+
+        <insert tableName="shape">
+            <column name="id" value="2"/>
+            <column name="version" value="0"/>
+            <column name="created_date"  valueNumeric="${oneDay}"/>
+            <column name="user_id" value="2"/>
+        </insert>
+
+        <insert tableName="shape">
+            <column name="id" value="3"/>
+            <column name="version" value="0"/>
+            <column name="created_date"  valueNumeric="${twoDays}"/>
+            <column name="user_id" value="1"/>
+        </insert>
+
+        <insert tableName="circle">
+            <column name="id" value="1"/>
+            <column name="radius" value="5"/>
+        </insert>
+
+        <insert tableName="rectangle">
+            <column name="id" value="2"/>
+            <column name="width" value="15"/>
+            <column name="height" value="10"/>
+        </insert>
+        
+        <insert tableName="triangle">
+            <column name="id" value="3"/>
+            <column name="base" value="6"/>
+            <column name="height" value="3"/>
+        </insert>
+
+    </changeSet>
+
+
+</databaseChangeLog>
