@@ -13,10 +13,6 @@ import java.util.Objects;
 @Service
 public class MatchingParametersValidator implements ConstraintValidator<MatchingParameters, SearchShapeCommand> {
 
-    @Override
-    public void initialize(MatchingParameters constraintAnnotation) {
-
-    }
 
     @Override
     public boolean isValid(SearchShapeCommand command, ConstraintValidatorContext constraintValidatorContext) {

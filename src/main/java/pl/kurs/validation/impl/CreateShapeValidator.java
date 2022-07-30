@@ -12,9 +12,6 @@ import java.util.Objects;
 @Service
 public class CreateShapeValidator implements ConstraintValidator<CreateShape, CreateShapeCommand> {
 
-    @Override
-    public void initialize(CreateShape constraintAnnotation) {
-    }
 
     @Override
     public boolean isValid(CreateShapeCommand command, ConstraintValidatorContext constraintValidatorContext) {

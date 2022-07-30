@@ -7,7 +7,6 @@ import pl.kurs.model.searchcriteria.SearchParameters;
 import pl.kurs.validation.annotation.MatchingParameters;
 import pl.kurs.validation.annotation.OneOfShapeTypes;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 @Getter

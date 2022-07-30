@@ -10,14 +10,12 @@ import pl.kurs.model.dto.ResultDto;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
-
-
 @Service
-public class EntityToDtoMapper<T extends Shape> implements Converter<T, ResultDto>{
+public class EntityToDtoMapper implements Converter<Shape, ResultDto>{
 
     @Override
-    public ResultDto convert(MappingContext<T, ResultDto> mappingContext) {
-        T entity = mappingContext.getSource();
+    public ResultDto convert(MappingContext<Shape, ResultDto> mappingContext) {
+        Shape entity = mappingContext.getSource();
 
         ResultDto result = ResultDto.builder()
                 .id(entity.getId())

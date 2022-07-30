@@ -7,7 +7,8 @@
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
 
-    <changeSet id="01" author="filip" runOnChange="true">
+    <changeSet id="30-07-2022-001" author="filip" runOnChange="true">
+
         <createTable tableName="user">
             <column name="id" autoIncrement="true" type="INT">
                 <constraints primaryKey="true"/>
@@ -111,6 +112,46 @@
                                  referencedColumnNames="id"
                                  onDelete="CASCADE"
                                  onUpdate="RESTRICT"/>
+    </changeSet>
+
+    <changeSet id="30-07-2022-002" author="filip" runOnChange="true">
+
+        <createTable tableName="role">
+            <column name="id" autoIncrement="true" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="app_user">
+            <column name="id" autoIncrement="true" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="username" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="app_user_roles">
+            <column name="app_user_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="roles_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="app_user_roles" baseColumnNames="app_user_id"
+                                 constraintName="fk_user_role" referencedTableName="app_user"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="app_user_roles" baseColumnNames="roles_id"
+                                 constraintName="fk_role_user" referencedTableName="role"
+                                 referencedColumnNames="id"/>
 
     </changeSet>
 

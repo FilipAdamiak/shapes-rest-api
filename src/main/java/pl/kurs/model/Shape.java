@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
-@Inheritance(strategy = InheritanceType.JOINED)
-@EqualsAndHashCode(exclude = "createdBy")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@EqualsAndHashCode(exclude = {"createdBy", "id"})
 public abstract class Shape implements ShapeFeature {
 
     @Id

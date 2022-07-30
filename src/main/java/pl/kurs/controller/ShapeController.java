@@ -22,14 +22,14 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/shapes")
 @RequiredArgsConstructor
-public class ShapeController<T extends Shape> {
+public class ShapeController {
 
-    private final ShapeService<T> shapeService;
+    private final ShapeService shapeService;
     private final ModelMapper modelMapper;
 
     @PostMapping
     public ResponseEntity<ResultDto> addShape(@RequestBody @Valid CreateShapeCommand command) {
-        T saved = shapeService.addShape(command);
+        Shape saved = shapeService.addShape(command);
         return new ResponseEntity(modelMapper.map(saved, ResultDto.class), HttpStatus.CREATED);
     }
 
@@ -41,7 +41,7 @@ public class ShapeController<T extends Shape> {
 
     @GetMapping("/{id}")
     public ResponseEntity<ResultDto> getSingleShape(@PathVariable int id) {
-        T object = shapeService.findByShapeId(id);
+        Shape object = shapeService.findByShapeId(id);
         return new ResponseEntity(modelMapper.map(object, ResultDto.class), HttpStatus.OK);
     }
 
@@ -55,8 +55,8 @@ public class ShapeController<T extends Shape> {
 
     @PutMapping("/{id}")
     public ResponseEntity<ResultDto> editShape(@PathVariable int id, @RequestBody @Valid UpdateShapeCommand command) {
-        T toEdit = shapeService.findByShapeId(id);
-        T edited = shapeService.editShape(toEdit, command);
+        Shape toEdit = shapeService.findByShapeId(id);
+        Shape edited = shapeService.editShape(toEdit, command);
         return new ResponseEntity(modelMapper.map(edited, ResultDto.class), HttpStatus.OK);
     }
 

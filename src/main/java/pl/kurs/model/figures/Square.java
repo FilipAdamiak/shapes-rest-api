@@ -3,19 +3,18 @@ package pl.kurs.model.figures;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.stereotype.Component;
 import pl.kurs.model.Shape;
 import pl.kurs.model.User;
 import pl.kurs.model.enums.Type;
 import pl.kurs.model.searchcriteria.Parameters;
 
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
-@Component
 public class Square extends Shape {
 
     private Double side;

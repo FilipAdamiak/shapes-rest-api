@@ -29,7 +29,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @ActiveProfiles("no-liquibase")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-class ShapeControllerTest {
+class
+
+ShapeControllerTest {
 
     @Autowired
     private MockMvc postman;
@@ -221,7 +223,7 @@ class ShapeControllerTest {
         postman.perform(MockMvcRequestBuilders.post("/shapes")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(saveJson))
-                .andExpect(status().isUnauthorized());
+                .andExpect(status().isForbidden());
     }
 
     @Test

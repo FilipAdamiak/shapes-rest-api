@@ -11,7 +11,7 @@
     <property name="twoDays" value="now() + interval 2 day" dbms="h2"/>
     <property name="fiveDays" value="now() + interval 5 day" dbms="h2"/>
 
-    <changeSet id="001" author="filip" runOnChange="true">
+    <changeSet id="30-07-2022-003" author="filip" runOnChange="true">
 
         <insert tableName="user">
             <column name="id" value="1"/>
@@ -62,7 +62,7 @@
             <column name="width" value="15"/>
             <column name="height" value="10"/>
         </insert>
-        
+
         <insert tableName="triangle">
             <column name="id" value="3"/>
             <column name="base" value="6"/>
@@ -71,5 +71,38 @@
 
     </changeSet>
 
+    <changeSet id="30-07-2022-004" author="filip" runOnChange="true">
+        <insert tableName="role">
+            <column name="id" value="1"/>
+            <column name="name" value="ROLE_USER"/>
+        </insert>
+
+        <insert tableName="role">
+            <column name="id" value="2"/>
+            <column name="name" value="ROLE_ADMIN"/>
+        </insert>
+
+        <insert tableName="app_user">
+            <column name="id" value="1"/>
+            <column name="password" value="$2a$10$BSBjoeBcXstjMJgAvAX3qu.mO2pmWscaGH0rLBSuIMswuYaayGw9e"/>
+            <column name="username" value="john"/>
+        </insert>
+
+        <insert tableName="app_user">
+            <column name="id" value="2"/>
+            <column name="password" value="$2a$10$z4KU5Rfx/Ph5D6iV9C71UOR7x8awiVupDGzO9r5LEZYM9Na9Y0H2C"/>
+            <column name="username" value="jim"/>
+        </insert>
+
+        <insert tableName="app_user_roles">
+            <column name="app_user_id" value="1"/>
+            <column name="roles_id" value="1"/>
+        </insert>
+
+        <insert tableName="app_user_roles">
+            <column name="app_user_id" value="2"/>
+            <column name="roles_id" value="2"/>
+        </insert>
+    </changeSet>
 
 </databaseChangeLog>
